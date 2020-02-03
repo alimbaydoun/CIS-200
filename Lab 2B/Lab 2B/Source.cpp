@@ -1,58 +1,36 @@
-#include <iostream>
+#include<iostream>
+#include<string>
+#include<iomanip>
+#include"Header.h"
 using namespace std;
 
-class Data
-{
-private:
-	int values[5];
-	int size = 5;
-
-public:
-	//desc: default zero argument constructor
-	//pre: none
-	//post: values array initialized to values 0 to 4
-	Data()
-	{
-		for (int i = 0; i < 5; i++)
-		{
-			values[i] = i;
-		}
-	}
-
-	//desc: calculates the sum of the values array
-	//pre: values is initialized
-	//post: sum of values array returned
-	int getSum()
-	{
-		int total = -1;
-		for (int i = 0; i < 5; i++)
-		{
-			total += values[i];
-		}
-		return total;
-	}
-
-	//desc: size accessor function
-	//pre: size initialized to some value
-	//post: return size
-	int getCount() { return size; }
-};
-
-//desc: computes the average from the sum and count
-//pre: sum and count must be initialized
-//post: average is returned
-double compute_average(int sum, int count)
-{
-	return sum / count;
-}
-
-//desc: main function
-//pre: none
-//post: average of values array displayed to screen with size of array
 int main()
 {
-	Data d;
-	cout << compute_average(d.getSum(), d.getCount()) << endl;
-	system("pause");	//may need to replace quote marks if copied
+	string month;
+	char option;
+	
+	float storeMonthlySales[numStores][numMonths][numDepts] =
+	{
+		1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.1, 2.2,
+		2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3.0, 3.1, 3.2,
+		3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4.0, 4.1, 4.2,
+		2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3.0, 3.1, 3.2
+	};
+	
+	do
+	{
+		cout << "Please enter a month to print (1-12): ";
+		cin >> month;
+		printMonthlySales(storeMonthlySales, month);
+		cin.ignore(256, ' ');
+		cout << "Do you want to enter another value? (y or n): ";
+		cin >> option;
+		while (option !='y' && option !='n')
+		{
+			cout << "Enter y or n: ";
+			cin >> option;
+		}
+	} while (option != 'n');
+	
 	return 0;
 }
