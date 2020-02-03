@@ -6,9 +6,9 @@
 #include"Header.h"
 using namespace std;
 
-#define numStores 2
-#define numMonths 12
-#define numDepts 2
+const int numDepts = 2;
+const int numStores = 2;
+const int numMonths = 12;
 
 void printMonthlySales(float storeMonthlySales[numStores][numMonths][numDepts], string month)
 {
@@ -28,7 +28,7 @@ void printMonthlySales(float storeMonthlySales[numStores][numMonths][numDepts], 
 		mon = 6;
 	else if (month == "July")
 		mon = 7;
-	else if (month == "Augest")
+	else if (month == "August")
 		mon = 8;
 	else if (month == "September")
 		mon = 9;
