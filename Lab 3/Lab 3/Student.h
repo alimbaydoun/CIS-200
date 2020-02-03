@@ -12,8 +12,7 @@ private:
 
 public:
 	string getMajor;
-
-
+	int getCredits;
 
 
 };
