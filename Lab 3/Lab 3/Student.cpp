@@ -40,6 +40,21 @@ void Student::setMajor(string m) {
     this->major = m;
 }
 
+void Student::setCredits(int c) {
+    this->credits = c;
+}
+
+void Student::setStatus(string m, int c) {
+    this->major = m;
+    this->credits = c;
+}
+
+string Student::displayStudent() {
+    string a = "I’m a " + this->major + " major and have completed " + to_string(this->credits) + " credit hours. \n";
+    return a;
+}
+
+
 int main()
 {
 
