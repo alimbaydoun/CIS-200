@@ -1,6 +1,18 @@
+/*
+Name: Ali Baydoun
+Date: 2/3/2020
+File: Lab 3
+Purpose: To create a program that represents students according to their major and credit hours
+*/
+
+//Librarys
 #include "Student.h"
 #include <vector>
 
+/*
+Precondition: None
+Postcondition: Calls displayStudent function and inputs from the data collected
+*/
 int main() {
     Student s1("Computer Science");
     cout << s1.displayStudent();
