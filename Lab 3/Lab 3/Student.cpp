@@ -53,16 +53,3 @@ string Student::displayStudent() {
     string a = "I’m a " + this->major + " major and have completed " + to_string(this->credits) + " credit hours. \n";
     return a;
 }
-
-
-int main()
-{
-
-
-
-
-
-
-
-	return 0;
-}
