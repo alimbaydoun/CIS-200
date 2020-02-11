@@ -6,8 +6,9 @@ Purpose: To create a program that represents students according to their major a
 */
 
 //Librarys
-#include "Student.h"
-#include <vector>
+#include"Student.h"
+#include<vector>
+#include<string>
 
 /*
 Precondition: None

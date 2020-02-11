@@ -51,6 +51,6 @@ void Student::setStatus(string m, int c) {
 }
 
 string Student::displayStudent() {
-    string a = "I’m a " + this->major + " major and have completed " + to_string(this->credits) + " credit hours. \n";
+    string a = "I am a " + this->major + " major and have completed " + to_string(this->credits) + " credit hours. \n";
     return a;
 }
