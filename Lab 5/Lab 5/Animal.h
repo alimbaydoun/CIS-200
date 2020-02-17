@@ -1,6 +1,8 @@
 #pragma once
+#include<iostream>
 #include<string>
-#include"Animal.cpp"
+#include"Dog.h"
+#include"Cat.h"
 using namespace std;
 
 class Animal
@@ -8,8 +10,8 @@ class Animal
 private:
 	string name;
 public:
-	string getAnimalType;
-	string getName;
-	void setName();
-	void makeNoise();
+	virtual string getAnimalType();
+	string getName();
+	void setName(string n);
+	virtual void makeNoise();
 };
