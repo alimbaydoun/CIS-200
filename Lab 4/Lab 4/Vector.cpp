@@ -5,8 +5,9 @@
 
 using namespace std;
 
-//Precondition: None
-//Postcondition: Initializes the vector with 0 size.
+//Precondition: Initialize the vector
+//Postcondition: Initialize size
+//Description: Initializes size with 0
 Vector::Vector()
 {
     size = 0;
@@ -19,8 +20,9 @@ Vector::Vector()
     }
 }
 
-//Precondition: None
-//Postcondition: Initializes the vector with specified size s.
+//Precondition: accepts size
+//Postcondition: Initializes integer s.
+//Description: Initializes entries to 0
 Vector::Vector(int s)
 {
     size = s;
@@ -33,8 +35,9 @@ Vector::Vector(int s)
     }
 }
 
-//Precondition: None
-//Postcondition: Initializes the vector with the members of another vector other.
+//Precondition: Initializes the vector
+//Postcondition: Initializes members of another vecter.
+//Description: Initializes the vector with members of another vector.
 Vector::Vector(const Vector & other)
 {
     this->size = other.size;
@@ -48,14 +51,16 @@ Vector::Vector(const Vector & other)
 }
 
 //Precondition: None
-//Postcondition: Deletes the vector (Destructor).
+//Postcondition: Deletes the vector.
+//Description: Vector this points to vector entries
 Vector::~Vector()
 {
 this->entries = NULL;
 }
 
-//Precondition: None
+//Precondition: uses the print() function
 //Postcondition: Prints the contents of vector.
+//Description: Prints the contents of entries
 void Vector::print()
 {
     cout << endl << "[";
@@ -70,15 +75,17 @@ void Vector::print()
 }
 
 //Precondition: None
-//Postcondition: Sets the value val at specified position if it is valid.
+//Postcondition: Sets the value val and value pos.
+//Description: Sets the value val at specified position if it is valid.
 void Vector::set(int val, int pos)
 {
     if(pos < size)
     entries[pos] = val;
 }
 
-//Precondition: None
-//Postcondition: Add the vector to other vector and stores in a vector, and will return.
+//Precondition: Initializes size + other.size
+//Postcondition: Adds the vectors and returns temp.
+//Description: Add the vector to other vector and stores in a vector, and will return.
 Vector Vector::operator+ (const Vector &other) const
 {
     Vector temp(size + other.size);
@@ -92,8 +99,9 @@ Vector Vector::operator+ (const Vector &other) const
     return temp;      
 }
 
-//Precondition: None
-//Postcondition: Assigns the values in other to this vector.
+//Precondition: Assigns the operator with Vector & other
+//Postcondition: Returns this vector.
+//Description: Assigns the values in other to this vector.
 Vector Vector::operator= (const Vector & other)
 {
    size = other.size;
