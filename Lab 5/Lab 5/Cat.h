@@ -1,13 +1,17 @@
-#pragma once
-#include<iostream>
-#include<string>
-#include"Animal.h"
+#ifndef CAT_H
+#define CAT_H
+#include "Animal.h"
+
 using namespace std;
 
-class Cat:public Animal
+class Cat : public Animal
 {
 public:
 	string getAnimalType();
 	void makeNoise();
-	void doKittythings();
+	void doKittyThings();
+private:
+	// Declaring variables
+
 };
+#endif

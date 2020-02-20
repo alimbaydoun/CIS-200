@@ -1,17 +1,18 @@
-#pragma once
-#include<iostream>
-#include<string>
-#include"Dog.h"
-#include"Cat.h"
+#ifndef ANIMAL_H
+#define ANIMAL_H
+
 using namespace std;
 
 class Animal
 {
-private:
-	string name;
 public:
-	virtual string getAnimalType()=0;
-	string getName();
-	void setName(string n);
-	virtual void makeNoise()=0;
+    virtual string getAnimalType() = 0;
+    virtual void makeNoise() = 0;
+    string getName();
+    void setName(string str);
+
+private:
+    // Declaring variables
+    string name;
 };
+#endif
