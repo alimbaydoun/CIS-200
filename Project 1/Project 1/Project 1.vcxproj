@@ -138,7 +138,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="GameEngine.cpp" />
+    <ClCompile Include="Reversi.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Reversi.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
