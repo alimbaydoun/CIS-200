@@ -1,35 +1,43 @@
 #include "Reversi.h"
+#include <iostream>
+#include <string>
+#include <vector>
 
+//Pre-condition: contains menu logic and user prompts
+//Post-condition: outputs the required main function to start the program
+//Description: main function displays the menu and outputs for the Reversi "Othello" program
 int main() {
-    // create a game object
-    Reversi game;
+    
+    Reversi game; // create a game object
+   
     while (true) {
-        // check if game is over
+        
         if (game.isOver()) {
-            // print game board
-            game.printBoard();
-            // print the result
-            game.printResult();
-            cout << endl; // print empty line
-            // ask user if they want to play again
+            
+            game.printBoard(); // prints the game board
+            
+            game.printResult(); // prints the result
+            cout << endl;
+            
             cout << "Do you want to play Again? (enter y or n): ";
-            // get user input
-            char input;
-            cin >> input;
+            
+            char input; 
+            cin >> input; // get user input
             cout << endl; // print empty line
+           
             if (input == 'y' or input == 'Y') {
                 game.resetBoard();
             }
             else {
-                // print good bye
-                cout << "Thank you for playing!" << endl;
+                cout << "Thank you for playing!" << endl; // print end game message
                 break;
             }
         }
         game.printTurn();
         game.printBoard();
+       
         int option = 0;
-        // Display menu option
+            // Displays menu option
         while (true) {
             cout << "Menu:" << endl;
             cout << "\t1) Place a disk" << endl;
@@ -37,70 +45,74 @@ int main() {
             cout << "\t3) Display possible moves" << endl;
             cout << "\t4) See best move" << endl;
             cout << "Select: ";
-            // get user input
-            cin >> option;
-            // do as option selected
+            
+            cin >> option; // gets user input
+            
             if (option == 1) {
-                // ask user for row and col
+                    // asks user for row and col
                 int row;
                 int col;
                 cout << "Enter a row number (from 0 to 7): ";
                 cin >> row;
                 cout << "Enter a col number (from 0 to 7): ";
                 cin >> col;
-                // check if possition is valid
+                    // checks if row and col are valid
                 if (game.isValidMove(row, col, game.getPlayerTurn())) {
-                    // place disk at given position
+                    // places disk at given row and col
                     game.setDisk(row, col, game.getPlayerTurn());
                     cout << endl; // print new line
-                    break; // break inner loop
+                    break; // breakes inner loop
                 }
                 else {
                     cout << "Invalid Move!" << endl;
                 }
             }
+            
             else if (option == 2) {
-                // enter game rules here
+                // game rules
                 cout << "Rules:" << endl;
                 cout << "1) Player with dark disk always play first" << endl;
                 cout << "2) To make a move player places a single disk on empty square of board";
                 cout << " this must meet folowing conditions:" << endl;
-                cout << "\ti) it creates a straight line(vertically, horizontally, or diagonally)";
+                cout << "\t1) it creates a straight line(vertically, horizontally, or diagonally)";
                 cout << " between new piece and another of player's piece on the board" << endl;
-                cout << "\tii) there must be one or more of the opponent's pieces between current player's pieces" << endl;
+                cout << "\t2) there must be one or more of the opponent's pieces between current player's pieces" << endl;
                 cout << "3) After player selects a valid square all opponent's piece between player's piece";
                 cout << " are converted in to player's piece color" << endl;
-                cout << "4) Move might couse pieces to flip in multiple direction" << endl;
+                cout << "4) Move might couse pieces to switch in multiple direction" << endl;
                 cout << "5) Player alternates turn after making a move, if a player can not make move they";
                 cout << " must \"pass\" their turn" << endl;
                 cout << "6) When no player can make a move game is over and result is calculated" << endl << endl;
             }
+            
             else if (option == 3) {
-                // place x on all possible moves
-                game.getPossibleMoves(game.getPlayerTurn());
-                // reprint board
-                game.printBoard();
-                // clear possible moves mark from board
-                game.removePossibleMoves();
+                
+                game.getPossibleMoves(game.getPlayerTurn()); // places x on all possible moves
+                
+                game.printBoard(); // reprints the board
+                
+                game.removePossibleMoves(); // cleares all possible moves from board
             }
+           
             else if (option == 4) {
                 int row = 0;
                 int col = 0;
-                int fliped = 0;
-                // get best move
-                game.bestMove(row, col, fliped, game.getPlayerTurn());
-                // print best move
-                cout << "Your best move is: " << row << ", " << col << " and will result in a ";
-                if (fliped > 0) {
+                int switched = 0;
+                
+                game.bestMove(row, col, switched, game.getPlayerTurn()); // gets the best move
+                
+                cout << "Your best move is: " << row << ", " << col << " and will result in a "; // prints the best move
+                if (switched > 0) {
                     cout << "+";
                 }
-                cout << fliped << " score differential" << endl;
+                cout << switched << " score differential" << endl;
             }
+           
             else {
-                // print error
-                cout << "Invalid option!" << endl;
+                
+                cout << "Invalid option!" << endl; // prints the error message
             }
-        }//end of display menu
+        }
     }
 
     return 0;
