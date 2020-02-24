@@ -24,14 +24,14 @@ int Reversi::count(char color) {
 }
 
 //Pre-condition: sets the disk at its position
-//Post-condition: sets the disk at its position
-//Description: sets the disk at its position
+//Post-condition: changes player turn if other player has possible moves
+//Description: flips all possible colors
 void Reversi::setDisk(int row, int col, char color) {
-    // set disk at position
+    
     board[row][col] = color;
-    // flips all possible colors
+    
     flipColors(row, col, color);
-    // changes player turn if other player has possible moves
+    
     if (playerTurn == 'b') {
         if (hasValidMove('w')) {
             playerTurn = 'w';
@@ -44,20 +44,20 @@ void Reversi::setDisk(int row, int col, char color) {
     }
 }
 
-//Pre-condition: prints the result of move
-//Post-condition: prints the result of move
-//Description: prints the result of move
+//Pre-condition: calculates color squares
+//Post-condition: makes a move on original board and prints the result of move
+//Description: creates a copy of current board and reverses the original board
 int Reversi::resultOfMove(int row, int col, char color) {
-    // creates a copy of current board
+    // 
     char copyBoard[ROWS][COLS];
     for (int r = 0; r < ROWS; r++) {
         for (int c = 0; c < COLS; c++) {
             copyBoard[r][c] = board[r][c];
         }
     }
-    // makes a move on original board
+    // 
     setDisk(row, col, color);
-    // calculates color squares
+    // 
     int colorNum = count(color);
     int otherNum;
     if (color == 'b') {
@@ -66,33 +66,33 @@ int Reversi::resultOfMove(int row, int col, char color) {
     else {
         otherNum = count('b');
     }
-    // reverses the original board
+    // 
     for (int r = 0; r < ROWS; r++) {
         for (int c = 0; c < COLS; c++) {
             board[r][c] = copyBoard[r][c];
         }
     }
-    // resets player's turn
+    
     playerTurn = color;
-    // returns the difference of color
+    
     return (colorNum - otherNum);
 }
 
-//Pre-condition: checks for the best move
-//Post-condition: checks for the best move
-//Description: checks for the best move
+//Pre-condition: sets fliped to minimum possible score
+//Post-condition: checks if current move is best move and sets this move to best move
+//Description: looks for every possible moves and gets move result
 void Reversi::bestMove(int& row, int& col, int& fliped, char color) {
-    // sets fliped to minimum possible score
+     
     fliped = -64;
-    // looks for every possible moves
+     
     for (int r = 0; r < ROWS; r++) {
         for (int c = 0; c < COLS; c++) {
             if (isValidMove(r, c, color)) {
-                // gets move result
+                 
                 int result = resultOfMove(r, c, color);
-                // checkes if current move is best move
+                 
                 if (fliped < result) {
-                    // sets this move to best move
+                     
                     row = r;
                     col = c;
                     fliped = result;
@@ -102,20 +102,20 @@ void Reversi::bestMove(int& row, int& col, int& fliped, char color) {
     }
 }
 
-//Pre-condition: print lines between the board
-//Post-condition: prints the lines between the board
-//Description: prints the lines between the board
+//Pre-condition: prints staring line
+//Post-condition: prints board line by line
+//Description: prints each line with chars seperated by |
 void Reversi::printBoard() {
-    // prints staring line
+     
     cout << "---------------------------------" << endl;
-    // prints board line by line
+     
     for (int r = 0; r < ROWS; r++) {
-        // prints each line with chars seperated by |
+         
         cout << "| ";
         for (int c = 0; c < COLS; c++) {
             cout << board[r][c] << " | ";
         }
-        // prints end of line
+        
         cout << endl;
         cout << "---------------------------------" << endl;
     }
@@ -153,9 +153,9 @@ void Reversi::printTurn() {
     }
 }
 
-//Pre-condition: flips the color when the color is placed on the board
+//Pre-condition: 
 //Post-condition: flips the color when the color is placed on the board
-//Description: flips the color when the color is placed on the board
+//Description: Reversi funtion uses the flipColors function to filp colors on the board
 void Reversi::flipColors(int row, int col, char color) {
     // creates flag to help fliping colors
     bool needFlip = false;
@@ -255,13 +255,13 @@ void Reversi::flipColors(int row, int col, char color) {
     }
     // looks for diagonal line
     // looks upper left
-    for (int i = row - 1, j = col - 1; i >= 0, j >= 0; i--, j--) {
+    for (int i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--) {
         if ((color == 'b' && board[i][j] == 'w') || (color == 'w' && board[i][j] == 'b')) {
             needFlip = true;
         }
         else if (needFlip && board[i][j] == color) {
             // flips the color
-            for (int r = row - 1, c = col - 1; r >= 0, c >= 0; r--, c--) {
+            for (int r = row - 1, c = col - 1; r >= 0 && c >= 0; r--, c--) {
                 if (board[r][c] == color) {
                     break;
                 }
@@ -278,13 +278,13 @@ void Reversi::flipColors(int row, int col, char color) {
         }
     }
     // looks upper right
-    for (int i = row - 1, j = col + 1; i >= 0, j < COLS; i--, j++) {
+    for (int i = row - 1, j = col + 1; i >= 0 && j < COLS; i--, j++) {
         if ((color == 'b' && board[i][j] == 'w') || (color == 'w' && board[i][j] == 'b')) {
             needFlip = true;
         }
         else if (needFlip && board[i][j] == color) {
             // flips the color
-            for (int r = row - 1, c = col + 1; r >= 0, c < COLS; r--, c++) {
+            for (int r = row - 1, c = col + 1; r >= 0 && c < COLS; r--, c++) {
                 if (board[r][c] == color) {
                     break;
                 }
@@ -301,13 +301,13 @@ void Reversi::flipColors(int row, int col, char color) {
         }
     }
     // looks lower left
-    for (int i = row + 1, j = col - 1; i < ROWS, j >= 0; i++, j--) {
+    for (int i = row + 1, j = col - 1; i < ROWS && j >= 0; i++, j--) {
         if ((color == 'b' && board[i][j] == 'w') || (color == 'w' && board[i][j] == 'b')) {
             needFlip = true;
         }
         else if (needFlip && board[i][j] == color) {
             // flips the color
-            for (int r = row + 1, c = col - 1; r < ROWS, c >= 0; r++, c--) {
+            for (int r = row + 1, c = col - 1; r < ROWS && c >= 0; r++, c--) {
                 if (board[r][c] == color) {
                     break;
                 }
@@ -324,13 +324,13 @@ void Reversi::flipColors(int row, int col, char color) {
         }
     }
     // looks lower right
-    for (int i = row + 1, j = col + 1; i < ROWS, j < COLS; i++, j++) {
+    for (int i = row + 1, j = col + 1; i < ROWS && j < COLS; i++, j++) {
         if ((color == 'b' && board[i][j] == 'w') || (color == 'w' && board[i][j] == 'b')) {
             needFlip = true;
         }
         else if (needFlip && board[i][j] == color) {
             // flips the color
-            for (int r = row + 1, c = col + 1; r < ROWS, c < COLS; r++, c++) {
+            for (int r = row + 1, c = col + 1; r < ROWS && c < COLS; r++, c++) {
                 if (board[r][c] == color) {
                     break;
                 }
@@ -349,22 +349,22 @@ void Reversi::flipColors(int row, int col, char color) {
 }
 
 //Pre-condition: checks if a valid move is being made
-//Post-condition: checks if a valid move is being made
-//Description: checks if a valid move is being made
+//Post-condition: bool function returns true or false based on checks
+//Description: functions for each direction check if move is valid and returns true or false
 bool Reversi::isValidMove(int row, int col, char color) {
-    // looks for empty spot
+    // checks for empty spot
     if (board[row][col] != ' ') {
         return false;
     }
-    bool hasFlip = false; // sets flag to false
-    // looks for virtical line
-        // looks up
+    bool hasFlip = false; 
+    // virtical line
+        // up
     for (int i = row - 1; i >= 0; i--) {
         if ((color == 'b' && board[i][col] == 'w') || (color == 'w' && board[i][col] == 'b')) {
             hasFlip = true;
         }
         else {
-            // checks if placing color at current position flips any color and have same same color at end
+            // checks if placing color at current position flips any color and have same same color
             if (hasFlip && ((color == 'b' && board[i][col] == 'b') || (color == 'w' && board[i][col] == 'w'))) {
                 return true;
             }
@@ -380,7 +380,7 @@ bool Reversi::isValidMove(int row, int col, char color) {
             hasFlip = true;
         }
         else {
-            // checks if placing color at current position flips any color and have same same color at end
+            // checks if placing color at current position flips any color and have same same color
             if (hasFlip && ((color == 'b' && board[i][col] == 'b') || (color == 'w' && board[i][col] == 'w'))) {
                 return true;
             }
@@ -391,14 +391,14 @@ bool Reversi::isValidMove(int row, int col, char color) {
         }
     }
 
-    // looks for horizontal line
-        // looks left
+    // for horizontal line
+        // left
     for (int i = col - 1; i >= 0; i--) {
         if ((color == 'b' && board[row][i] == 'w') || (color == 'w' && board[row][i] == 'b')) {
             hasFlip = true;
         }
         else {
-            // checks if placing color at current position flips any color and have same same color at end
+            // checks if placing color at current position flips any color and have same same color
             if (hasFlip && ((color == 'b' && board[row][i] == 'b') || (color == 'w' && board[row][i] == 'w'))) {
                 return true;
             }
@@ -414,7 +414,7 @@ bool Reversi::isValidMove(int row, int col, char color) {
             hasFlip = true;
         }
         else {
-            // checks if placing color at current position flips any color and have same same color at end
+            // checks if placing color at current position flips any color and have same same color
             if (hasFlip && ((color == 'b' && board[row][i] == 'b') || (color == 'w' && board[row][i] == 'w'))) {
                 return true;
             }
@@ -424,14 +424,14 @@ bool Reversi::isValidMove(int row, int col, char color) {
             }
         }
     }
-    // looks for diagonal line
-        // looks upper left
-    for (int i = row - 1, j = col - 1; i >= 0, j >= 0; i--, j--) {
+    // diagonal line
+        // upper left
+    for (int i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--) {
         if ((color == 'b' && board[i][j] == 'w') || (color == 'w' && board[i][j] == 'b')) {
             hasFlip = true;
         }
         else {
-            // checks if placing color at current position flips any color and have same same color at end
+            // checks if placing color at current position flips any color and have same same color
             if (hasFlip && ((color == 'b' && board[i][j] == 'b') || (color == 'w' && board[i][j] == 'w'))) {
                 return true;
             }
@@ -441,13 +441,13 @@ bool Reversi::isValidMove(int row, int col, char color) {
             }
         }
     }
-    // looks upper right
-    for (int i = row - 1, j = col + 1; i >= 0, j < COLS; i--, j++) {
+    // upper right
+    for (int i = row - 1, j = col + 1; i >= 0 && j < COLS; i--, j++) {
         if ((color == 'b' && board[i][j] == 'w') || (color == 'w' && board[i][j] == 'b')) {
             hasFlip = true;
         }
         else {
-            // checks if placing color at current position flips any color and have same same color at end
+            // checks if placing color at current position flips any color and have same same color
             if (hasFlip && ((color == 'b' && board[i][j] == 'b') || (color == 'w' && board[i][j] == 'w'))) {
                 return true;
             }
@@ -457,13 +457,13 @@ bool Reversi::isValidMove(int row, int col, char color) {
             }
         }
     }
-    // looks lower left
-    for (int i = row + 1, j = col - 1; i < ROWS, j >= 0; i++, j--) {
+    // lower left
+    for (int i = row + 1, j = col - 1; i < ROWS && j >= 0; i++, j--) {
         if ((color == 'b' && board[i][j] == 'w') || (color == 'w' && board[i][j] == 'b')) {
             hasFlip = true;
         }
         else {
-            // checks if placing color at current position flips any color and have same same color at end
+            // checks if placing color at current position flips any color and have same same color
             if (hasFlip && ((color == 'b' && board[i][j] == 'b') || (color == 'w' && board[i][j] == 'w'))) {
                 return true;
             }
@@ -473,8 +473,8 @@ bool Reversi::isValidMove(int row, int col, char color) {
             }
         }
     }
-    // looks lower right
-    for (int i = row + 1, j = col + 1; i < ROWS, j < COLS; i++, j++) {
+    // lower right
+    for (int i = row + 1, j = col + 1; i < ROWS && j < COLS; i++, j++) {
         if ((color == 'b' && board[i][j] == 'w') || (color == 'w' && board[i][j] == 'b')) {
             hasFlip = true;
         }
@@ -493,14 +493,14 @@ bool Reversi::isValidMove(int row, int col, char color) {
 }
 
 //Pre-condition: gets the players turn
-//Post-condition: gets the players turn
+//Post-condition: returns the players turn
 //Description: gets the players turn
 char Reversi::getPlayerTurn() {
     return playerTurn;
 }
 
-//Pre-condition: checks if the player has a valid move
-//Post-condition: checks if the player has a valid move
+//Pre-condition: checks if isValidMove valid
+//Post-condition: returns true or false based on function
 //Description: checks if the player has a valid move
 bool Reversi::hasValidMove(char color) {
     for (int r = 0; r < ROWS; r++) {
@@ -514,7 +514,7 @@ bool Reversi::hasValidMove(char color) {
 }
 
 //Pre-condition: checks the board for possible moves
-//Post-condition: checks the board for possible moves
+//Post-condition: returns possible moves to isValidMove
 //Description: checks the board for possible moves
 void Reversi::getPossibleMoves(char color) {
     // check all board square for possible move
@@ -527,9 +527,9 @@ void Reversi::getPossibleMoves(char color) {
     }
 }
 
-//Pre-condition: removes the possible moves
+//Pre-condition: finds the possible moves and removes them
 //Post-condition: removes the possible moves
-//Description: removes the possible moves
+//Description: finds the possible moves and removes them
 void Reversi::removePossibleMoves() {
     for (int r = 0; r < ROWS; r++) {
         for (int c = 0; c < COLS; c++) {
@@ -548,8 +548,8 @@ bool Reversi::isOver() {
 }
 
 //Pre-condition: gets a count of squares for both players
-//Post-condition: gets a count of squares for both players
-//Description: gets a count of squares for both players
+//Post-condition: prints result of game
+//Description: gets a count of squares for both players and prints the result of the game
 void Reversi::printResult() {
     int white = count('w');
     int black = count('b');

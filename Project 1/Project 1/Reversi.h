@@ -11,43 +11,41 @@ private:
     
     const static int COLS = 8;
     
-    char board[ROWS][COLS]; // each square hold 'b' , 'w' or ' '
+    char board[ROWS][COLS]; // each square holds 'b' , 'w' or ' '
 
-    char playerTurn; // current turn of the player
+    char playerTurn; // the current turn of the player
 
 
 public:
-    Reversi(); // initializes the board to all blanks
+    Reversi(); // initializes the board to all blank spaces
    
-    int count(char color); // returns the number of square containing color
+    int count(char color); // returns the number of squares containing a color
    
     void setDisk(int row, int col, char color); // sets the square at(row,col) to color
-    // returns number of color - number of other color when disk of color is placed at(row,col)
     
-    int resultOfMove(int row, int col, char color);
-    // returns the max resultOfMove(row,col) when a disk of color is placed at(row,col) by
-    // returning the row and col by refrence
-    void bestMove(int& row, int& col, int& fliped, char color);
+    int resultOfMove(int row, int col, char color); // returns number of color - number of other color when disk of color is placed at(row,col)
+    
+    void bestMove(int& row, int& col, int& fliped, char color); // returns the max resultOfMove(row,col) when a disk of color is placed at(row,col) by returning the row and col by reference
    
-    void printBoard(); // prints the board to console screen
+    void printBoard(); // prints the board to ther console screen
   
-    void resetBoard(); // reset game to starting position
+    void resetBoard(); // reset game to the starting position
 
-    void printTurn(); // prints current player's turn on console
+    void printTurn(); // prints the current player's turn on console
     
-    void flipColors(int row, int col, char color); // flip all possible colors from given possition to given color
+    void flipColors(int row, int col, char color); // flip all possible colors from the given position to the given color
    
-    bool isValidMove(int row, int col, char color); // return true if player with given color can place disk at(row,col)
+    bool isValidMove(int row, int col, char color); // returns true if player with the given color can place disk at(row,col)
    
-    char getPlayerTurn(); // returns current player turn in color(b or w)
+    char getPlayerTurn(); // returns the current player's turn in color(b or w)
     
-    bool hasValidMove(char color); // return true if player with color has any valid move
+    bool hasValidMove(char color); // returns true if the current player has any valid move
     
-    void getPossibleMoves(char color); // places 'x' on board square for all possible moves for player with given color
+    void getPossibleMoves(char color); // places 'x' on the board square for all possible moves for current player
    
-    void removePossibleMoves(); // removes all 'x' from board
+    void removePossibleMoves(); // removes all 'x' from the board
    
-    bool isOver(); // returns true if game is over
+    bool isOver(); // returns true if the game is over
    
-    void printResult(); // prints result to console
+    void printResult(); // prints the result
 };
