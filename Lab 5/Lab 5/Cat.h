@@ -1,5 +1,5 @@
-#ifndef CAT_H
-#define CAT_H
+#pragma once
+#include <iostream>
 #include "Animal.h"
 
 using namespace std;
@@ -10,8 +10,4 @@ public:
 	string getAnimalType();
 	void makeNoise();
 	void doKittyThings();
-private:
-	// Declaring variables
-
 };
-#endif
