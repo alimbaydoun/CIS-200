@@ -1,19 +1,19 @@
 #pragma once
 #include <stdio.h>
+
 #include <cstddef>
 
-template <class T>
+template < class T >
 class Node {
 public:
     T data;
     Node* next;
 };
 
-
-template <class T>
+template < class T >
 class Queue {
 public:
-    Node<T>* front, * rear;
+    Node < T >* front, * rear;
     Queue() {
         front = rear = NULL;
 

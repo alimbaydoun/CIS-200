@@ -1,8 +1,8 @@
 #pragma once
 #include <iostream>
 
-
 using namespace std;
+
 class Operator {
 private:
     char ch;
@@ -10,8 +10,7 @@ private:
     double num2;
     char num;
 public:
-    bool isOperationVaild(char ch)
-    {
+    bool isOperationVaild(char ch) {
         if (ch == '+' || ch == '-' || ch == '*' || ch == '/' || ch == '%') {
             return true;
         }
@@ -19,8 +18,7 @@ public:
             return false;
         }
     };
-    double OperationFunction(double num1, double num2, char num)
-    {
+    double OperationFunction(double num1, double num2, char num) {
         float result = 0.0;
 
         switch (num) {

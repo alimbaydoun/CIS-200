@@ -1,5 +1,7 @@
-#include "printer.h"
 #include <iostream>
+
+#include "printer.h"
+
 using namespace std;
 //Pre:None
 //Desc:Prints the starting printer spooler and current time
@@ -9,12 +11,10 @@ int main() {
     PrinterSpooler ps;
     int c = 1000;
     int aTime;
-    while (c)
-    {
+    while (c) {
         cout << "Current Time:  " << c-- << "\n";
         aTime = ps.getArrivalTime();
-        if (aTime == 0)
-        {
+        if (aTime == 0) {
             ps.generateJob();
             aTime = ps.getArrivalTime();
         }

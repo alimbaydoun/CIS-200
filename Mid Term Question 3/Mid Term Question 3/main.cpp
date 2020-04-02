@@ -1,25 +1,25 @@
-#include <iostream>
-#include <iomanip>
+#include<iostream>
+
+#include<iomanip>
+
 #include<string>
+
 #include"stack.h"
+
 #include"Header.h"
 
-
 using namespace std;
-void execute(string str, Stack<double>& s)
-{
+
+void execute(string str, Stack < double >& s) {
     double num1, num2;
     Operator o;
     string word = "";
-    for (auto x : str)
-    {
-        if (x == ' ' || x == '\t')
-        {
+    for (auto x : str) {
+        if (x == ' ' || x == '\t') {
             //cout << word << endl;
             if (word != "-" && word != "+" && word != "/" && word != "*")
                 s.push(atof(word.c_str()));
-            else if (o.isOperationVaild((word.c_str())[0]))
-            {
+            else if (o.isOperationVaild((word.c_str())[0])) {
                 num1 = s.Top();
                 s.pop();
                 num2 = s.Top();
@@ -28,28 +28,20 @@ void execute(string str, Stack<double>& s)
             }
             word = "";
         }
-        else if (x != '\n')
-        {
+        else if (x != '\n') {
             word = word + x;
         }
     }
     if (!s.isEmpty())
         cout << fixed << showpoint << setprecision(5) << (s.pop()) << endl;
-
 }
 
-int main()
-{
-
+int main() {
     string expression;
-    Stack<double> s;
+    Stack < double > s;
 
-
-
-
-    while (true)
-    {
-        cout << "Type in a postfix exexpressionssion(ex: 1 3 + =) or stop to stop: " << endl;
+    while (true) {
+        cout << "Please type in a postfix expression (ex: + = 3 1) or stop: " << endl;
         getline(cin, expression);
 
         if (expression.compare("stop") == 0 || expression.compare("Stop") == 0) {
