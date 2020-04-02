@@ -1,25 +1,25 @@
 #pragma once
 #define SIZE 1
 
-// Class for Stack
-template < class X >
+template < class N >
+
 class Stack {
-    X* arr;
+private:
+    N* arr;
     int top;
     int capacity;
 
 public:
-    Stack(int size = SIZE); // constructor
-
-    void push(X);
-    X pop();
-    X Top();
+    Stack(int size = SIZE);
 
     int size();
     bool isEmpty();
     bool isFull();
 
-    // destructor
+    void push(N);
+    N pop();
+    N Top();
+    
     ~Stack() {
         delete[] arr;
     }

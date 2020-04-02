@@ -1,25 +1,24 @@
 #pragma once
-#include <stdio.h>
+#include<stdio.h>
+#include<cstddef>
 
-#include <cstddef>
-
-template < class T >
+template < class N >
 class Node {
 public:
-    T data;
+    N data;
     Node* next;
 };
 
-template < class T >
+template < class N >
 class Queue {
 public:
-    Node < T >* front, * rear;
+    Node < N >* front, * rear;
     Queue() {
         front = rear = NULL;
 
     }
 
-    void insert(T n);
+    void insert(N n);
     void deleteitem();
     void display();
     int size();

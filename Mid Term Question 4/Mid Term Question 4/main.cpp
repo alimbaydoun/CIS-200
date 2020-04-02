@@ -1,27 +1,30 @@
-#include <iostream>
-
-#include "printer.h"
+#include<iostream>
+#include"printer.h"
 
 using namespace std;
-//Pre:None
-//Desc:Prints the starting printer spooler and current time
-//Post:Prints the starting printer spooler and current time
-int main() {
-    cout << "Starting Printer Spooler\n";
+
+//Precondition:
+//Postcondition:
+//Description:
+void main() {
+    cout << "Initiating Printer Spooler" << endl;
+   
     PrinterSpooler ps;
-    int c = 1000;
+    int x = 1000;
     int aTime;
-    while (c) {
-        cout << "Current Time:  " << c-- << "\n";
+    
+    while (x) {
+        cout << "Current Time:  " << x-- << endl;
         aTime = ps.getArrivalTime();
+        
         if (aTime == 0) {
             ps.generateJob();
             aTime = ps.getArrivalTime();
         }
+        
         else
             aTime--;
         ps.processJob();
     }
-    return 0;
-
+    system("pause");
 }

@@ -1,13 +1,11 @@
 #pragma once
-#include "queue.h"
-
-#include <stdlib.h>
-
-#include <time.h>
-
-#include <iostream>
+#include"queue.h"
+#include<stdlib.h>
+#include<time.h>
+#include<iostream>
 
 using namespace std;
+
 class PrinterSpooler {
 private:
     Queue < int > spooler;

@@ -1,4 +1,7 @@
 #include"stack.cpp"
 
-template class Stack < int >;
+//Precondition:
+//Postcondition:
+//Description:
 template class Stack < double >;
+template class Stack < int >;

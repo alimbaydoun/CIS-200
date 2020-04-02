@@ -1,4 +1,7 @@
-#include "queue.cpp"
+#include"queue.cpp"
 
-template class Queue < int >;
+//Precondition:
+//Postcondition:
+//Description:
 template class Node < int >;
+template class Queue < int >;

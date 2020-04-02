@@ -1,5 +1,5 @@
 #pragma once
-#include <iostream>
+#include<iostream>
 
 using namespace std;
 
@@ -9,6 +9,7 @@ private:
     double num1;
     double num2;
     char num;
+
 public:
     bool isOperationVaild(char ch) {
         if (ch == '+' || ch == '-' || ch == '*' || ch == '/' || ch == '%') {
@@ -40,5 +41,4 @@ public:
         }
         return result;
     };
-
 };
