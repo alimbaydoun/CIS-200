@@ -4,30 +4,29 @@
 
 using namespace std;
 
-class Employee
-{
+class Employee {
 private:
-	string firstName;
-	string lastName;
-	string ssn;
-	string empNumber;
-	int taxRateCode;
+    string firstName;
+    string lastName;
+    string ssn;
+    string empNumber;
+    int taxRateCode;
 
 public:
-	Employee();
-	
-	void setFirstName(string name);
-	void setLastName(string name);
-	void setSSN(string number);
-	void setEmpNumber(string number);
-	void setTaxRateCode(int x);
+    Employee();
 
-	string getName();
-	string getSSN();
-	string getEmpNumber();
-	double getTaxRateCode();
+    void setFirstName(string name);
+    void setLastName(string name);
+    void setSSN(string number);
+    void setEmpNumber(string number);
+    void setTaxRateCode(int x);
 
-	virtual void makeNoise();
-	virtual void calculatePay() = 0;
-	virtual void print() = 0;
+    string getName();
+    string getSSN();
+    string getEmpNumber();
+    double getTaxRateCode();
+
+    virtual void makeNoise();
+    virtual void calculatePay() = 0;
+    virtual void print() = 0;
 };
