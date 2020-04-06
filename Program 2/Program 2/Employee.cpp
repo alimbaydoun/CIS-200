@@ -12,6 +12,9 @@ Employee::Employee() {
     this -> empNumber = "XXX-L";
 }
 
+//Pre-condition: 
+//Post-condition: 
+//Description: 
 void Employee::setTaxRateCode(int x) {
     if (x >= 1 && x <= 3) {
         this -> taxRateCode = x;
@@ -22,14 +25,23 @@ void Employee::setTaxRateCode(int x) {
     }
 }
 
+//Pre-condition: 
+//Post-condition: 
+//Description: 
 void Employee::setFirstName(string name) {
     this -> firstName = name;
 }
 
+//Pre-condition: 
+//Post-condition: 
+//Description: 
 void Employee::setLastName(string name) {
     this -> lastName = name;
 }
 
+//Pre-condition: 
+//Post-condition: 
+//Description: 
 void Employee::setSSN(string num) {
 
     if (num.size() != 11) {
@@ -65,6 +77,9 @@ void Employee::setSSN(string num) {
 
 }
 
+//Pre-condition: 
+//Post-condition: 
+//Description: 
 void Employee::setEmpNumber(string num) {
 
     if (num.size() != 5) {
@@ -102,6 +117,9 @@ void Employee::setEmpNumber(string num) {
     }
 }
 
+//Pre-condition: 
+//Post-condition: 
+//Description: 
 void Employee::makeNoise() {
     string msg[3] = {
       "This is a test.",

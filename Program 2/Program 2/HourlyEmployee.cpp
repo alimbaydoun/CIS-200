@@ -3,6 +3,9 @@
 
 using namespace std;
 
+//Pre-condition: 
+//Post-condition: 
+//Description: 
 void HourlyEmployee::setAmountEarned(double amount) {
     this -> amountEarned = amount;
 }
@@ -26,6 +29,9 @@ HourlyEmployee::HourlyEmployee() {
     this -> amountEarned = 0;
 }
 
+//Pre-condition: 
+//Post-condition: 
+//Description: 
 void HourlyEmployee::setHoursWorked(double hours) {
     if (hours > 40 || hours < 0) {
         cout << "The maximum amout of hours earned is 40." << endl;
@@ -35,6 +41,9 @@ void HourlyEmployee::setHoursWorked(double hours) {
     this -> hoursWorked = hours;
 }
 
+//Pre-condition: 
+//Post-condition: 
+//Description: 
 void HourlyEmployee::setHourlyPayRate(double rate) {
 
     if (rate > 100 || rate < 15) {

@@ -7,6 +7,10 @@ RegularEmployee::RegularEmployee() {
 
     this -> overtimeHours = 0;
 }
+
+//Pre-condition: 
+//Post-condition: 
+//Description: 
 void RegularEmployee::setOvertimeHours(double hours) {
     if (this -> getHoursWorked() == 40) {
         cout << "You have already fulfilled 40 hours" << endl;
@@ -34,6 +38,9 @@ double RegularEmployee::getOvertimeHours() {
     return this -> overtimeHours;
 }
 
+//Pre-condition: 
+//Post-condition: 
+//Description: 
 void RegularEmployee::calculatePay() {
 
     double amount = (this -> getHoursWorked()* this -> getHourlyPayRate()) + (this -> getOvertimeHours()* (this -> getHourlyPayRate() * 1.5));
@@ -45,6 +52,9 @@ double RegularEmployee::getNetIncome() {
     return this -> getAmountEarned() - (this -> getAmountEarned()* this -> getTaxRateCode());
 }
 
+//Pre-condition: 
+//Post-condition: 
+//Description: 
 void RegularEmployee::print() {
 
     cout << "Employee Name : " << this -> getName() << endl;

@@ -10,6 +10,9 @@ SalaryEmployee::SalaryEmployee() {
     this -> weeklyPay = 0;
 }
 
+//Pre-condition: 
+//Post-condition: 
+//Description: 
 void SalaryEmployee::calculatePay() {
 
     this -> setWeeklyPay(this -> getAnnualPay() / 52.0);
@@ -21,6 +24,9 @@ double SalaryEmployee::getGrossSalary() {
     return gross;
 }
 
+//Pre-condition: 
+//Post-condition: 
+//Description: 
 void SalaryEmployee::makeNoise() {
 
     string msg[3] = {
@@ -34,6 +40,9 @@ void SalaryEmployee::makeNoise() {
     cout << msg[i] << endl;
 }
 
+//Pre-condition: 
+//Post-condition: 
+//Description: 
 void SalaryEmployee::setAnnualPay(double pay) {
     if (pay < 0) {
         cout << "Error" << endl;
@@ -43,6 +52,9 @@ void SalaryEmployee::setAnnualPay(double pay) {
     this -> annualPay = pay;
 }
 
+//Pre-condition: 
+//Post-condition: 
+//Description: 
 void SalaryEmployee::setWeeklyPay(double weekly_pay) {
 
     this -> weeklyPay = weekly_pay;
@@ -56,6 +68,9 @@ double SalaryEmployee::getWeeklyPay() {
     return this -> weeklyPay;
 }
 
+//Pre-condition: 
+//Post-condition: 
+//Description: 
 void SalaryEmployee::print() {
 
     cout << "Employee Name : " << this -> getName() << endl;

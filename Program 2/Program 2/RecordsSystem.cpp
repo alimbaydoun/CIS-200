@@ -11,6 +11,9 @@ using namespace std;
 vector < Employee* > emps;
 vector < int > t;
 
+//Pre-condition: 
+//Post-condition: 
+//Description: 
 void salaryEmpInput() {
 
     SalaryEmployee* emp = new SalaryEmployee();
@@ -37,6 +40,9 @@ void salaryEmpInput() {
     emps.push_back(emp);
 }
 
+//Pre-condition: 
+//Post-condition: 
+//Description: 
 void regularEmpInput() {
 
     RegularEmployee* emp = new RegularEmployee();
@@ -70,6 +76,9 @@ void regularEmpInput() {
     emps.push_back(emp);
 }
 
+//Pre-condition: 
+//Post-condition: 
+//Description: 
 void agencyEmpInput() {
 
     AgencyEmployee* emp = new AgencyEmployee();
@@ -103,6 +112,9 @@ void agencyEmpInput() {
     emps.push_back(emp);
 }
 
+//Pre-condition: 
+//Post-condition: 
+//Description: 
 void print() {
     cout << "Employee Details: " << endl;
     for (int i = 0; i < emps.size(); i++) {
@@ -112,6 +124,9 @@ void print() {
     cout << endl;
 }
 
+//Pre-condition: 
+//Post-condition: 
+//Description: 
 void menu() {
     while (true) {
 
@@ -146,8 +161,12 @@ void menu() {
     }
 }
 
-int main() {
+//Pre-condition: 
+//Post-condition: 
+//Description: 
+void main() {
 
     menu();
-    return 0;
+    
+    system("pause");
 }

@@ -8,14 +8,23 @@ AgencyEmployee::AgencyEmployee() {
     this -> companyName = "";
 }
 
+//Pre-condition: 
+//Post-condition: 
+//Description: 
 void AgencyEmployee::setCompanyName(string name) {
     this -> companyName = name;
 }
 
+//Pre-condition: 
+//Post-condition: 
+//Description: 
 string AgencyEmployee::getCompanyName() {
     return this -> companyName;
 }
 
+//Pre-condition: 
+//Post-condition: 
+//Description: 
 void AgencyEmployee::makeNoise() {
     string msg[3] = {
       "Right, so there’s three more people we can easily lose.",
@@ -28,17 +37,26 @@ void AgencyEmployee::makeNoise() {
     cout << msg[i] << endl;
 }
 
+//Pre-condition: 
+//Post-condition: 
+//Description: 
 void AgencyEmployee::calculatePay() {
 
     double amount = this -> getHourlyPayRate()* this -> getHoursWorked();
     this -> setAmountEarned(amount);
 }
 
+//Pre-condition: 
+//Post-condition: 
+//Description: 
 double AgencyEmployee::getNetIncome() {
 
     return this -> getAmountEarned() - (this -> getAmountEarned()* this -> getTaxRateCode());
 }
 
+//Pre-condition: 
+//Post-condition: 
+//Description: 
 void AgencyEmployee::print() {
 
     cout << "Employee Name : " << this -> getName() << endl;
