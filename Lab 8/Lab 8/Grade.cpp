@@ -80,14 +80,17 @@ double Grader::calculateMidTerms(double ex1, double ex2)
 {
 	return ((ex1 + ex2) / 2) * 0.2;
 }
+
 double Grader::calculateFinal(double ex3)
 {
 	return (ex3) * 0.25;
 }
+
 double Grader::calculateProgs(double p[])
 {
 	return ((p[1] + p[2] + p[3] + p[0]) / 4) * 0.3;
 }
+
 double Grader::calculateLabs(double p[])
 {
 	double sum = 0;
@@ -95,13 +98,15 @@ double Grader::calculateLabs(double p[])
 		sum += p[i];
 	return ((sum / 10) * 1.5);
 }
+
 string Grader::calculateGrade(string line)
 {
 	string grade;
 	char* temp;
-	double mid[2], finalMarks, marks[17];
+	double mid[2];
+	double finalMarks;
+	double marks[17];
 	int i = 0;
-
 	temp = strtok((char*)(line.c_str()), " ");
 
 	while (temp != NULL)
@@ -113,36 +118,51 @@ string Grader::calculateGrade(string line)
 		temp = strtok(NULL, " ");
 		i++;
 	}
-	finalMarks = calculateMidTerms(marks[0], marks[1]) + calculateFinal(marks[2]) + calculateProgs(&marks[3]) + calculateLabs(&marks[7]);
+	
+	finalMarks = calculateMidTerms(marks[0], marks[1] ) + calculateFinal(marks[2]) + calculateProgs(&marks[3]) + calculateLabs(&marks[7]);
+	
 	if (finalMarks >= 97)
 		grade = "A+";
+	
 	else if (finalMarks < 97 && finalMarks >= 93)
 		grade = "A";
+	
 	else if (finalMarks < 93 && finalMarks >= 92)
 		grade = "A-";
+	
 	else if (finalMarks < 92 && finalMarks >= 87)
 		grade = "B+";
+	
 	else if (finalMarks < 87 && finalMarks >= 83)
 		grade = "B";
+	
 	else if (finalMarks < 83 && finalMarks >= 80)
 		grade = "B-";
+	
 	else if (finalMarks < 80 && finalMarks >= 77)
 		grade = "C+";
+	
 	else if (finalMarks < 77 && finalMarks >= 73)
 		grade = "C";
+	
 	else if (finalMarks < 73 && finalMarks >= 70)
 		grade = "C-";
+	
 	else if (finalMarks < 80 && finalMarks >= 67)
 		grade = "D+";
+	
 	else if (finalMarks < 67 && finalMarks >= 63)
 		grade = "D";
+	
 	else if (finalMarks < 63 && finalMarks >= 60)
 		grade = "D-";
+	
 	else
 		grade = "F";
 
 	return grade;
 }
+
 void Grader::calcualteDistribution() {
 	input.open("cis200finalgrades.txt");
 	string grade, line;
@@ -177,8 +197,36 @@ void Grader::calcualteDistribution() {
 		getline(input, line);
 
 	}
+	
 	input.close();
+	
 	setOutputFile("cis200finalgrades.txt", ios::app);
+	
 	output << "\nCIS 200 Grade Distribution	A: " << grades[0] << " B: " << grades[1];
+	
 	output << " C: " << grades[2] << " D: " << grades[3] << " F: " << grades[4] << endl;
+}
+
+int main()
+{
+	Grader g;
+	string path = "";
+
+	while (path != "stop")
+	{
+		cout << "Enter a name of class file to read or stop to end: ";
+		cin >> path;
+		if (path != "stop") {
+			g.readFile(path);
+		}
+	}
+	path = "";
+	while (path != "stop")
+	{
+		cout << "Enter ID to find and print record or stop to end: ";
+		cin >> path;
+		if (path != "stop") {
+			g.searchID(path);
+		}
+	}
 }

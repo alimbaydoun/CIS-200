@@ -139,7 +139,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Grade.cpp" />
-    <ClCompile Include="GradeSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Grade.h" />

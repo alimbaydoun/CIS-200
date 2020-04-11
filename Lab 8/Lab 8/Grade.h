@@ -19,7 +19,6 @@ public:
 	void calcualteDistribution();
 
 protected:
-	double calculateMidterms(double ex1, double ex2);
 	double calculateMidTerms(double ex1, double ex2);
 	double calculateFinal(double ex3);
 	double calculateProgs(double p[]);
