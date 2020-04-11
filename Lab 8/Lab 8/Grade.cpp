@@ -5,6 +5,56 @@
 #include <vector>
 #pragma warning(disable : 4996)
 
+//precondition: 
+//postcondition: 
+//description: 
+void Grader::calcualteDistribution() {
+	input.open("cis200finalgrades.txt");
+	string grade, line;
+	int grades[5] = { 0 };
+	int num;
+
+	if (!input)
+		return;
+	getline(input, line);
+	getline(input, line);
+
+
+	getline(input, line);
+	getline(input, line);
+	while (!input.eof())
+	{
+		input >> line >> line;
+		for (int i = 0; i < 18; i++)
+			cin >> num;
+		cin >> grade;
+		if (grade == "A+" || grade == "A" || grade == "A-")
+			grades[0]++;
+		else if (grade == "B" || grade == "B-" || grade == "B+")
+			grades[1]++;
+		else if (grade == "C-" || grade == "C" || grade == "C+")
+			grades[2]++;
+		else if (grade == "D+" || grade == "D" || grade == "D-")
+			grades[3]++;
+		else
+			grades[4]++;
+
+		getline(input, line);
+
+	}
+
+	input.close();
+
+	setOutputFile("cis200finalgrades.txt", ios::app);
+
+	output << "\nCIS 200 Grade Distribution	A: " << grades[0] << " B: " << grades[1];
+
+	output << " C: " << grades[2] << " D: " << grades[3] << " F: " << grades[4] << endl;
+}
+
+//precondition: 
+//postcondition: 
+//description: 
 void Grader::setOutputFile(string file = "cis200finalgrades.txt", int mode = 0)
 {
 	output.open(file, mode);
@@ -15,36 +65,18 @@ void Grader::setOutputFile(string file = "cis200finalgrades.txt", int mode = 0)
 	}
 }
 
+//precondition: 
+//postcondition: 
+//description: 
 void Grader::closeOutputFile()
 {
 	if (output)
 		output.close();
 }
 
-void Grader::searchID(string ID)
-{
-	string line, name, lname, id;
-
-	input.open("cis200finalgrades.txt");
-
-	if (!input)
-		return;
-	getline(input, line);
-	getline(input, line);
-
-	while (!input.eof())
-	{
-		input >> name >> lname >> id;
-		getline(input, line);
-		if (ID == id)
-		{
-			cout << name << " " << lname << " " << id << " " << line << endl;
-			return;
-		}
-	}
-	cout << "Error" << endl;
-}
-
+//precondition: 
+//postcondition: 
+//description: 
 void Grader::readFile(string inFile)
 {
 	string line;
@@ -76,6 +108,33 @@ void Grader::readFile(string inFile)
 	input.close();
 
 	cout << "File: " << inFile << " Successful" << endl;
+}
+
+//precondition: 
+//postcondition: 
+//description: 
+void Grader::searchID(string ID)
+{
+	string line, name, lname, id;
+
+	input.open("cis200finalgrades.txt");
+
+	if (!input)
+		return;
+	getline(input, line);
+	getline(input, line);
+
+	while (!input.eof())
+	{
+		input >> name >> lname >> id;
+		getline(input, line);
+		if (ID == id)
+		{
+			cout << name << " " << lname << " " << id << " " << line << endl;
+			return;
+		}
+	}
+	cout << "Error" << endl;
 }
 
 double Grader::calculateMidTerms(double ex1, double ex2)
@@ -163,50 +222,6 @@ string Grader::calculateGrade(string line)
 		grade = "F";
 
 	return grade;
-}
-
-void Grader::calcualteDistribution() {
-	input.open("cis200finalgrades.txt");
-	string grade, line;
-	int grades[5] = { 0 };
-	int num;
-
-	if (!input)
-		return;
-	getline(input, line);
-	getline(input, line);
-
-
-	getline(input, line);
-	getline(input, line);
-	while (!input.eof())
-	{
-		input >> line >> line;
-		for (int i = 0; i < 18; i++)
-			cin >> num;
-		cin >> grade;
-		if (grade == "A+" || grade == "A" || grade == "A-")
-			grades[0]++;
-		else if (grade == "B" || grade == "B-" || grade == "B+")
-			grades[1]++;
-		else if (grade == "C-" || grade == "C" || grade == "C+")
-			grades[2]++;
-		else if (grade == "D+" || grade == "D" || grade == "D-")
-			grades[3]++;
-		else
-			grades[4]++;
-
-		getline(input, line);
-
-	}
-
-	input.close();
-
-	setOutputFile("cis200finalgrades.txt", ios::app);
-
-	output << "\nCIS 200 Grade Distribution	A: " << grades[0] << " B: " << grades[1];
-
-	output << " C: " << grades[2] << " D: " << grades[3] << " F: " << grades[4] << endl;
 }
 
 int main()
