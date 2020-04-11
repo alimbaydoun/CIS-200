@@ -144,7 +144,7 @@ string Grader::calculateGrade(string line)
 	return grade;
 }
 void Grader::calcualteDistribution() {
-	input.open("cis200funalMarksgrades.txt");
+	input.open("cis200finalgrades.txt");
 	string grade, line;
 	int grades[5] = { 0 };
 	int num;
@@ -178,7 +178,7 @@ void Grader::calcualteDistribution() {
 
 	}
 	input.close();
-	setOutputFile("cis200funalMarksgrades.txt", ios::app);
+	setOutputFile("cis200finalgrades.txt", ios::app);
 	output << "\nCIS 200 Grade Distribution	A: " << grades[0] << " B: " << grades[1];
 	output << " C: " << grades[2] << " D: " << grades[3] << " F: " << grades[4] << endl;
 }
