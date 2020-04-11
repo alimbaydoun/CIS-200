@@ -26,7 +26,7 @@ void Grader::searchID(string ID)
 	input.open("cis200finalgrades.txt");
 	
 	if (!input)
-		//return;
+		return;
 	getline(input, line);
 	getline(input, line);
 	
@@ -37,7 +37,7 @@ void Grader::searchID(string ID)
 		if (ID == id)
 		{
 			cout << name << " " << lname << " " << id << " " << line << endl;
-			//return;
+			return;
 		}
 	}
 	cout << "Error" << endl;
