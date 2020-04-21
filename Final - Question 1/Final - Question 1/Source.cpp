@@ -250,9 +250,9 @@ public:
 			cout << "Not valid Placement\n";
 		}
 
-		cout << "Enter x for Submarine: ";
+		cout << "Enter x for Battleship: ";
 		cin >> x;
-		cout << "Enter y for Submarine: ";
+		cout << "Enter y for Battleship: ";
 		cin >> y;
 		cout << "Enter Direction: (h/v) ";
 		cin >> dir;
@@ -280,9 +280,9 @@ public:
 			cout << "Not valid Placement\n";
 		}
 
-		cout << "Enter x for Spaceship: ";
+		cout << "Enter x for Battleship: ";
 		cin >> x;
-		cout << "Enter y for Spaceship: ";
+		cout << "Enter y for Battleship: ";
 		cin >> y;
 		cout << "Enter Direction: (h/v) ";
 		cin >> dir;
