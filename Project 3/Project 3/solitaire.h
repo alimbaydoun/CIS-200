@@ -4,6 +4,7 @@
 #include<cstdlib>
 #include<string>
 #include<ctime>
+
 using namespace std;
 
 class Node
@@ -29,6 +30,10 @@ public:
 	}
 	int size() { return count; }
 	bool empty() { return count <= 0; }
+	
+//Pre-condition: 
+//Post-condition: 
+//Description: 
 	void push(string value) {
 		if (!head) head = new Node(value);
 		else {
@@ -101,6 +106,10 @@ public:
 	}
 	int size() { return count; }
 	bool empty() { return count <= 0; }
+
+//Pre-condition: 
+//Post-condition: 
+//Description: 
 	void enque(string value) {
 		if (!head) head = new Node(value);
 		else {
@@ -131,6 +140,10 @@ public:
 		}
 		return str;
 	}
+
+//Pre-condition: 
+//Post-condition: 
+//Description: 
 	void sortIncreasingOrder() {
 		Node* node = head;
 		for (int i = 0; i < size() - 1; i++, node = node->next) {
@@ -205,6 +218,9 @@ public:
 		return m;
 	}
 
+//Pre-condition: 
+//Post-condition: 
+//Description: 
 	void shuffleDeck()
 	{
 		srand(time(0));
@@ -223,6 +239,10 @@ public:
 			}
 		}
 	}
+
+//Pre-condition: 
+//Post-condition: 
+//Description: 
 	void initData()
 	{
 		int c = 0;
@@ -261,8 +281,8 @@ public:
 		}
 		cout << "Deck: " << setw(3) << (!deck.empty() ? "?" : "0")
 			<< "   Discard: " << (!discardPile.empty() ? discardPile.print() : "0") << endl;
-		cout << "Options: 1) Move card to Sort Pile  2) Move card(s) in Piles or Discard 3) Flip Cards" << endl;
-		cout << "Your selection: ";
+		cout << "Options: \n\n1) Move card to Sort Pile  \n2) Move card(s) in Piles or Discard \n3) Flip Cards" << endl;
+		cout << "\nYour selection: ";
 		int option;
 		cin >> option;
 		while (option < 1 || option > 3) {
@@ -272,13 +292,16 @@ public:
 		return option;
 	}
 
+//Pre-condition: 
+//Post-condition: 
+//Description: 
 	void play()
 	{
 		cout << "Start deck:\n" << deck.print();
 		deck.sortIncreasingOrder();
 		cout << "\n\nAfter sort increasing order deck:\n" << deck.print();
 		deck.sortDecreasingOrder();
-		cout << "\n\nAfter sotr decreasing order deck:\n" << deck.print();
+		cout << "\n\nAfter sort decreasing order deck:\n" << deck.print();
 		shuffleDeck();
 		cout << "\n\nAfter shuffle(randomize) deck:\n" << deck.print() << "\n\n\n\n";
 
@@ -310,6 +333,9 @@ public:
 		cout << endl;
 	}
 
+//Pre-condition: 
+//Post-condition: 
+//Description: 
 	void moveCardToSortPileMenu()
 	{
 		cout << "\nFrom where you want to select card:" << endl;
@@ -387,6 +413,9 @@ public:
 			|| (previous == "9" && current == "10") || (previous == "10" && current == "J") || (previous == "J" && current == "Q") || (previous == "Q" && current == "K");
 	}
 
+//Pre-condition: 
+//Post-condition: 
+//Description: 
 	void moveCardsToPileMenu()
 	{
 		cout << "\nFrom where you want to select card:" << endl;
@@ -471,6 +500,9 @@ public:
 			|| (previous == ' ');
 	}
 
+//Pre-condition: 
+//Post-condition: 
+//Description: 
 	void flipCards() {
 		if (deck.empty()) {
 			while (!dealtDeck.empty())
