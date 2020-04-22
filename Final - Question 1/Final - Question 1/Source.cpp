@@ -127,7 +127,7 @@ public:
 		}
 	}
 
-	void printBoat() {
+	void printBoard() {
 		cout << "  ";
 		for (int col = 0; col < 10; col++) {
 			cout << col << "   ";
@@ -230,7 +230,7 @@ public:
 			cout << "The Area is already Occupied\n";
 		}
 
-		printBoat();
+		printBoard();
 	}
 
 	void placeShips() {
@@ -315,7 +315,7 @@ public:
 int main() {
 
 	Game G;
-	G.printBoat();
+	G.printBoard();
 	G.placeShips();
 	system("pause");
 	return 0;
