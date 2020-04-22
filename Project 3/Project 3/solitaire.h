@@ -18,6 +18,10 @@ private:
 	Node* head;
 	int count;
 public:
+
+	//Pre-condition: 
+	//Post-condition: 
+	//Description: 
 	int hideCount;
 	Stack() :head(nullptr), count(0), hideCount(0) {}
 	~Stack() {
@@ -26,8 +30,20 @@ public:
 			delete curr;
 		}
 	}
+
+	//Pre-condition: 
+	//Post-condition: 
+	//Description: 
 	int size() { return count; }
+
+	//Pre-condition: 
+	//Post-condition: 
+	//Description: 
 	bool empty() { return count <= 0; }
+	
+	//Pre-condition: 
+	//Post-condition: 
+	//Description: 	
 	void push(string value) {
 		if (!head) head = new Node(value);
 		else {
@@ -98,8 +114,20 @@ public:
 		}
 		count = 0;
 	}
+	
+	//Pre-condition: 
+	//Post-condition: 
+	//Description: 	
 	int size() { return count; }
+	
+	//Pre-condition: 
+	//Post-condition: 
+	//Description: 	
 	bool empty() { return count <= 0; }
+	
+	//Pre-condition: 
+	//Post-condition: 
+	//Description: 	
 	void enque(string value) {
 		if (!head) head = new Node(value);
 		else {
@@ -130,6 +158,10 @@ public:
 		}
 		return str;
 	}
+	
+	//Pre-condition: 
+	//Post-condition: 
+	//Description: 	
 	void sortIncreasingOrder() {
 		Node* node = head;
 		for (int i = 0; i < size() - 1; i++, node = node->next) {
@@ -143,6 +175,10 @@ public:
 			node->value = temp;
 		}
 	}
+	
+	//Pre-condition: 
+	//Post-condition: 
+	//Description: 	
 	void sortDecreasingOrder() {
 		Node* node = head;
 		for (int i = 0; i < size() - 1; i++, node = node->next) {
@@ -156,6 +192,10 @@ public:
 			node->value = temp;
 		}
 	}
+	
+	//Pre-condition: 
+	//Post-condition: 
+	//Description: 	
 	int compare(string c1, string c2) {
 		string cards[52] = { "AH","AD","AS","AC","2H","2D","2S","2C","3H","3D","3S","3C",
 			"4H","4D","4S","4C","5H","5D","5S","5C","6H","6D","6S","6C","7H","7D","7S","7C",
@@ -197,6 +237,9 @@ public:
 		score = 0;
 	}
 
+	//Pre-condition: 
+	//Post-condition: 
+	//Description: 
 	int getMaxPileSize() {
 		int m = 0;
 		for (int i = 0; i < 7; i++)
@@ -204,6 +247,9 @@ public:
 		return m;
 	}
 
+	//Pre-condition: 
+	//Post-condition: 
+	//Description: 
 	void shuffleDeck()
 	{
 		srand((unsigned int)time(0));
@@ -222,6 +268,10 @@ public:
 			}
 		}
 	}
+
+	//Pre-condition: 
+	//Post-condition: 
+	//Description: 
 	void initData()
 	{
 		int c = 0;
@@ -233,6 +283,9 @@ public:
 		}
 	}
 
+	//Pre-condition: 
+	//Post-condition: 
+	//Description: 
 	int display()
 	{
 		cout << left;
@@ -271,6 +324,9 @@ public:
 		return option;
 	}
 
+	//Pre-condition: 
+	//Post-condition: 
+	//Description: 
 	void play()
 	{
 		cout << "Start deck:\n" << deck.print();
@@ -309,6 +365,9 @@ public:
 		cout << endl;
 	}
 
+	//Pre-condition: 
+	//Post-condition: 
+	//Description: 
 	void moveCardToSortPileMenu()
 	{
 		cout << "\nFrom where you want to select card:" << endl;
@@ -346,6 +405,10 @@ public:
 			}
 		}
 	}
+	
+	//Pre-condition: 
+	//Post-condition: 
+	//Description: 	
 	bool moveCardToSortPile(string card) {
 		char suit = card[card.size() - 1];
 		string cardNumber = card.substr(0, card.size() - 1);
@@ -379,6 +442,10 @@ public:
 		}
 		return false;
 	}
+	
+	//Pre-condition: 
+	//Post-condition: 
+	//Description: 	
 	bool isOneHigh(string previous, string current) {
 		return (previous == "" && current == "A") || (previous == "A" && current == "2") || (previous == "2" && current == "3")
 			|| (previous == "3" && current == "4") || (previous == "4" && current == "5") || (previous == "5" && current == "6")
@@ -386,6 +453,9 @@ public:
 			|| (previous == "9" && current == "10") || (previous == "10" && current == "J") || (previous == "J" && current == "Q") || (previous == "Q" && current == "K");
 	}
 
+	//Pre-condition: 
+	//Post-condition: 
+	//Description: 
 	void moveCardsToPileMenu()
 	{
 		cout << "\nFrom where you want to select card:" << endl;
@@ -447,6 +517,10 @@ public:
 			}
 		}
 	}
+	
+	//Pre-condition: 
+	//Post-condition: 
+	//Description: 	
 	bool canMoveCardToPile(string card, int pilenum) {
 		char cardSuit = card[card.size() - 1];
 		string cardNumber = card.substr(0, card.size() - 1);
@@ -458,18 +532,29 @@ public:
 		}
 		return false;
 	}
+	
+	//Pre-condition: 
+	//Post-condition: 
+	//Description: 	
 	bool isOneLow(string previous, string current) {
 		return (previous == "" && current == "K") || (previous == "K" && current == "Q") || (previous == "Q" && current == "J")
 			|| (previous == "J" && current == "10") || (previous == "10" && current == "9") || (previous == "9" && current == "8")
 			|| (previous == "8" && current == "7") || (previous == "7" && current == "6") || (previous == "6" && current == "5")
 			|| (previous == "5" && current == "4") || (previous == "4" && current == "3") || (previous == "3" && current == "2") || (previous == "2" && current == "A");
 	}
+	
+	//Pre-condition: 
+	//Post-condition: 
+	//Description: 	
 	bool isDiffrentColor(char previous, char current) {
 		return ((previous == 'C' || previous == 'S') && (current == 'H' || current == 'D'))
 			|| ((previous == 'H' || previous == 'D') && (current == 'C' || current == 'S'))
 			|| (previous == ' ');
 	}
 
+	//Pre-condition: 
+	//Post-condition: 
+	//Description: 	
 	void flipCards() {
 		if (deck.empty()) {
 			while (!dealtDeck.empty())
