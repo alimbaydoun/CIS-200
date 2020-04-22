@@ -206,7 +206,7 @@ public:
 
 	void shuffleDeck()
 	{
-		srand(time(0));
+		srand((unsigned int)time(0));
 		deck.~Queue();
 		string cards[52] = { "AH","2H","3H","4H","5H","6H","7H","8H","9H","10H","JH","QH","KH",
 			"AD","2D","3D","4D","5D","6D","7D","8D","9D","10D","JD","QD","KD",
@@ -236,7 +236,7 @@ public:
 	int display()
 	{
 		cout << left;
-		cout << "                    " << "YOUR_NAME" << "'s SOLITAIRE GAME" << endl;
+		cout << "                    " << "ALI BAYDOUN" << "'s SOLITAIRE GAME" << endl;
 		cout << "Heart Pile: " << setw(3) << (!heartPile.empty() ? heartPile.top() : "0")
 			<< " Diamond Pile: " << setw(3) << (!diamondPile.empty() ? diamondPile.top() : "0")
 			<< " Spade Pile: " << setw(3) << (!spadePile.empty() ? spadePile.top() : "0")
@@ -260,8 +260,8 @@ public:
 		}
 		cout << "Deck: " << setw(3) << (!deck.empty() ? "?" : "0")
 			<< "   Discard: " << (!discardPile.empty() ? discardPile.print() : "0") << endl;
-		cout << "Options: 1) Move card to Sort Pile  2) Move card(s) in Piles or Discard 3) Flip Cards" << endl;
-		cout << "Your selection: ";
+		cout << "\nOptions: \n\n1) Move card to Sort Pile  \n2) Move card(s) in Piles or Discard \n3) Flip Cards" << endl;
+		cout << "\nYour selection: ";
 		int option;
 		cin >> option;
 		while (option < 1 || option > 3) {
@@ -331,7 +331,7 @@ public:
 			if (pile[option - 1].empty()) cout << "Pile " << option << " have no card" << endl;
 			else {
 				if (moveCardToSortPile(pile[option - 1].top()))
-					pile[option - 1].pop();
+					string temp = pile[option - 1].pop();
 				else cout << "Card can't move to sort pile" << endl;
 			}
 		}
@@ -339,7 +339,7 @@ public:
 			if (discardPile.empty()) cout << "Discard have no card" << endl;
 			else {
 				if (moveCardToSortPile(discardPile.front())) {
-					discardPile.deque();
+					string temp = discardPile.deque();
 					if (!deck.empty()) discardPile.enque(deck.deque());
 				}
 				else cout << "Card can't move to sort pile" << endl;
@@ -423,13 +423,13 @@ public:
 					for (int i = cardCount; i >= 1; i--)
 						pile[pilenum - 1].push(pile[option - 1].get(pile[option - 1].size() - i + 1));
 					for (int i = cardCount; i >= 1; i--)
-						pile[option - 1].pop();
+						string temp = pile[option - 1].pop();
 				}
 				else cout << "Card can't move to pile" << endl;
 			}
 		}
 		else if (option == 8) {
-			if (discardPile.empty()) cout << "Discard have no card" << endl;
+			if (discardPile.empty()) cout << "Discard has no card" << endl;
 			else {
 				cout << "Enter pile number(1-7) where you want to place card: ";
 				int pilenum;
@@ -440,7 +440,7 @@ public:
 				}
 				if (canMoveCardToPile(discardPile.front(), pilenum)) {
 					pile[pilenum - 1].push(discardPile.front());
-					discardPile.deque();
+					string temp = discardPile.deque();
 					if (!deck.empty()) discardPile.enque(deck.deque());
 				}
 				else cout << "Card can't move to pile" << endl;
