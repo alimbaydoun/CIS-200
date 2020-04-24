@@ -115,14 +115,14 @@ public:
 		count = 0;
 	}
 	
-	//Pre-condition: 
+	//Pre-condition: declares size
 	//Post-condition: 
-	//Description: 	
+	//Description: 	returns count
 	int size() { return count; }
 	
 	//Pre-condition: 
 	//Post-condition: 
-	//Description: 	
+	//Description: 	if empty, return count <= 0
 	bool empty() { return count <= 0; }
 	
 	//Pre-condition: 
@@ -239,7 +239,7 @@ public:
 
 	//Pre-condition: 
 	//Post-condition: 
-	//Description: 
+	//Description: largest pile size to max of 7 cards
 	int getMaxPileSize() {
 		int m = 0;
 		for (int i = 0; i < 7; i++)
@@ -249,7 +249,7 @@ public:
 
 	//Pre-condition: 
 	//Post-condition: 
-	//Description: 
+	//Description: uses srand to shuffle the string cards
 	void shuffleDeck()
 	{
 		srand((unsigned int)time(0));
@@ -271,7 +271,7 @@ public:
 
 	//Pre-condition: 
 	//Post-condition: 
-	//Description: 
+	//Description: pushes piles ranging from 1 card in the 1st pile to 7 cards in the 7th pile 
 	void initData()
 	{
 		int c = 0;
@@ -283,9 +283,9 @@ public:
 		}
 	}
 
-	//Pre-condition: 
-	//Post-condition: 
-	//Description: 
+	//Pre-condition: sets the pile size and displays the gameboard
+	//Post-condition: takes user's slesction and selection returned as option
+	//Description: prints the gameboard
 	int display()
 	{
 		cout << left;
@@ -318,7 +318,7 @@ public:
 		int option;
 		cin >> option;
 		while (option < 1 || option > 3) {
-			cout << "Invalid option, Select again: ";
+			cout << "\nInvalid option, Select again: ";
 			cin >> option;
 		}
 		return option;
@@ -329,11 +329,11 @@ public:
 	//Description: 
 	void play()
 	{
-		cout << "Start deck:\n" << deck.print();
+		cout << "\nStart deck:\n" << deck.print();
 		deck.sortIncreasingOrder();
 		cout << "\n\nAfter sort increasing order deck:\n" << deck.print();
 		deck.sortDecreasingOrder();
-		cout << "\n\nAfter sotr decreasing order deck:\n" << deck.print();
+		cout << "\n\nAfter sort decreasing order deck:\n" << deck.print();
 		shuffleDeck();
 		cout << "\n\nAfter shuffle(randomize) deck:\n" << deck.print() << "\n\n\n\n";
 
@@ -351,13 +351,13 @@ public:
 				flipCards();
 				if (completeFlips == 3) {
 					score = heartPile.size() * 10 + diamondPile.size() * 10 + clubsPile.size() * 10 + spadePile.size() * 10;
-					cout << "You lose, your score is = " << score << endl;
+					cout << "\nYou lose, your score is = " << score << endl;
 					break;
 				}
 			}
 			score = heartPile.size() * 10 + diamondPile.size() * 10 + clubsPile.size() * 10 + spadePile.size() * 10;
 			if (heartPile.size() == 13 && diamondPile.size() == 13 && clubsPile.size() == 13 && spadePile.size() == 13) {
-				cout << "You win, your score is = " << score << endl;
+				cout << "\nYou win, your score is = " << score << endl;
 				break;
 			}
 			cout << endl << "-------------------------------------------------------------------------------------" << endl;
@@ -367,10 +367,10 @@ public:
 
 	//Pre-condition: 
 	//Post-condition: 
-	//Description: 
+	//Description: moves selected card to the sort pile
 	void moveCardToSortPileMenu()
 	{
-		cout << "\nFrom where you want to select card:" << endl;
+		cout << "\nFrom where you want to select your card:" << endl;
 		cout << "1: Pile 1 (" << pile[0].top() << ")" << endl;
 		cout << "2: Pile 2 (" << pile[1].top() << ")" << endl;
 		cout << "3: Pile 3 (" << pile[2].top() << ")" << endl;
@@ -383,25 +383,25 @@ public:
 		int option;
 		cin >> option;
 		while (option < 1 || option > 8) {
-			cout << "Invalid option, Select again: ";
+			cout << "\nInvalid option, select again: ";
 			cin >> option;
 		}
 		if (1 <= option && option <= 7) {
-			if (pile[option - 1].empty()) cout << "Pile " << option << " have no card" << endl;
+			if (pile[option - 1].empty()) cout << "Pile " << option << " has no card" << endl;
 			else {
 				if (moveCardToSortPile(pile[option - 1].top()))
 					string temp = pile[option - 1].pop();
-				else cout << "Card can't move to sort pile" << endl;
+				else cout << "\nCard can't move to sort pile" << endl;
 			}
 		}
 		else if (option == 8) {
-			if (discardPile.empty()) cout << "Discard have no card" << endl;
+			if (discardPile.empty()) cout << "\nDiscard has no card" << endl;
 			else {
 				if (moveCardToSortPile(discardPile.front())) {
 					string temp = discardPile.deque();
 					if (!deck.empty()) discardPile.enque(deck.deque());
 				}
-				else cout << "Card can't move to sort pile" << endl;
+				else cout << "\nCard can't move to sort pile" << endl;
 			}
 		}
 	}
@@ -453,12 +453,12 @@ public:
 			|| (previous == "9" && current == "10") || (previous == "10" && current == "J") || (previous == "J" && current == "Q") || (previous == "Q" && current == "K");
 	}
 
-	//Pre-condition: 
-	//Post-condition: 
-	//Description: 
+	//Pre-condition: takes user input to move a card
+	//Post-condition: uses canMoveCardToPile to check if card can move to the pile
+	//Description: function uses canMoveCardToPile to move cards on the game board
 	void moveCardsToPileMenu()
 	{
-		cout << "\nFrom where you want to select card:" << endl;
+		cout << "\nFrom where you want to select your card:" << endl;
 		cout << "1: Pile 1 (" << pile[0].top() << ")" << endl;
 		cout << "2: Pile 2 (" << pile[1].top() << ")" << endl;
 		cout << "3: Pile 3 (" << pile[2].top() << ")" << endl;
@@ -467,11 +467,11 @@ public:
 		cout << "6: Pile 6 (" << pile[5].top() << ")" << endl;
 		cout << "7: Pile 7 (" << pile[6].top() << ")" << endl;
 		cout << "8: Discard (" << discardPile.front() << ")" << endl;
-		cout << "Your Selection: ";
+		cout << "\nYour Selection: ";
 		int option;
 		cin >> option;
 		while (option < 1 || option > 8) {
-			cout << "Invalid option, Select again: ";
+			cout << "\nInvalid option, Select again: ";
 			cin >> option;
 		}
 		if (1 <= option && option <= 7) {
@@ -479,14 +479,14 @@ public:
 			else {
 				int maxCardCount = pile[option - 1].size() - pile[option - 1].hideCount, cardCount = 1;
 				if (maxCardCount > 1) {
-					cout << "How many cards you want to move (1-" << maxCardCount << "): ";
+					cout << "\nHow many cards you want to move (1-" << maxCardCount << "): ";
 					cin >> cardCount;
 				}
-				cout << "Enter pile number(1-7) where you want to place card (not include pile " << option << "): ";
+				cout << "\nEnter pile number(1-7) where you want to place card (not include pile " << option << "): ";
 				int pilenum;
 				cin >> pilenum;
 				while (pilenum < 1 || pilenum > 7 || pilenum == option) {
-					cout << "Invalid pile number, Select again: ";
+					cout << "\nInvalid pile number, Select again: ";
 					cin >> pilenum;
 				}
 				if (canMoveCardToPile(pile[option - 1].get(pile[option - 1].size() - cardCount + 1), pilenum)) {
@@ -495,17 +495,17 @@ public:
 					for (int i = cardCount; i >= 1; i--)
 						string temp = pile[option - 1].pop();
 				}
-				else cout << "Card can't move to pile" << endl;
+				else cout << "\nCard can't move to pile" << endl;
 			}
 		}
 		else if (option == 8) {
-			if (discardPile.empty()) cout << "Discard has no card" << endl;
+			if (discardPile.empty()) cout << "\nDiscard has no card" << endl;
 			else {
-				cout << "Enter pile number(1-7) where you want to place card: ";
+				cout << "\nEnter pile number(1-7) where you want to place card: ";
 				int pilenum;
 				cin >> pilenum;
 				while (pilenum < 1 || pilenum > 7) {
-					cout << "Invalid pile number, Select again: ";
+					cout << "\nInvalid pile number, Select again: ";
 					cin >> pilenum;
 				}
 				if (canMoveCardToPile(discardPile.front(), pilenum)) {
@@ -513,21 +513,21 @@ public:
 					string temp = discardPile.deque();
 					if (!deck.empty()) discardPile.enque(deck.deque());
 				}
-				else cout << "Card can't move to pile" << endl;
+				else cout << "\nCard can't move to pile" << endl;
 			}
 		}
 	}
 	
 	//Pre-condition: 
 	//Post-condition: 
-	//Description: 	
+	//Description: 	uses isDifferentColor and isOneLow to check if card can be moved
 	bool canMoveCardToPile(string card, int pilenum) {
 		char cardSuit = card[card.size() - 1];
 		string cardNumber = card.substr(0, card.size() - 1);
 		string pileCard = pile[pilenum - 1].top();
 		char pileCardSuit = (pileCard != "") ? pileCard[pileCard.size() - 1] : ' ';
 		string pileCardNumber = (pileCard != "") ? pileCard.substr(0, pileCard.size() - 1) : "";
-		if (isDiffrentColor(pileCardSuit, cardSuit) && isOneLow(pileCardNumber, cardNumber)) {
+		if (isDifferentColor(pileCardSuit, cardSuit) && isOneLow(pileCardNumber, cardNumber)) {
 			return true;
 		}
 		return false;
@@ -535,7 +535,7 @@ public:
 	
 	//Pre-condition: 
 	//Post-condition: 
-	//Description: 	
+	//Description: 	bool checks if card chosen in canMoveCardToPile is one lower to where it is picked
 	bool isOneLow(string previous, string current) {
 		return (previous == "" && current == "K") || (previous == "K" && current == "Q") || (previous == "Q" && current == "J")
 			|| (previous == "J" && current == "10") || (previous == "10" && current == "9") || (previous == "9" && current == "8")
@@ -545,8 +545,8 @@ public:
 	
 	//Pre-condition: 
 	//Post-condition: 
-	//Description: 	
-	bool isDiffrentColor(char previous, char current) {
+	//Description: 	checks if card is a different color and if that is true or false
+	bool isDifferentColor(char previous, char current) {
 		return ((previous == 'C' || previous == 'S') && (current == 'H' || current == 'D'))
 			|| ((previous == 'H' || previous == 'D') && (current == 'C' || current == 'S'))
 			|| (previous == ' ');
@@ -554,7 +554,7 @@ public:
 
 	//Pre-condition: 
 	//Post-condition: 
-	//Description: 	
+	//Description: 	flips cards 
 	void flipCards() {
 		if (deck.empty()) {
 			while (!dealtDeck.empty())
@@ -570,5 +570,4 @@ public:
 		if (!deck.empty()) discardPile.enque(deck.deque());
 		if (!deck.empty()) discardPile.enque(deck.deque());
 	}
-
 };

@@ -3,6 +3,9 @@
 
 using namespace std;
 
+//Pre-condition: 
+//Post-condition: 
+//Description: 	 Program execution begins and ends here
 int main()
 {
 	Solitaire s;
